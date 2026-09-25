@@ -1,0 +1,939 @@
+<mvc:View
+    controllerName="rippletrace.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+
+    <VBox
+        fitContainer="true"
+        class="appRoot">
+
+        <!-- ================================================= -->
+        <!-- SHELL -->
+        <!-- ================================================= -->
+
+        <f:ShellBar
+            title="RippleTrace"
+            secondTitle="Supply Chain Risk Command Center"
+            showNotifications="true"
+            showProductSwitcher="true">
+
+            <f:profile>
+                <Avatar
+                    initials="RT"
+                    displaySize="XS"/>
+            </f:profile>
+
+        </f:ShellBar>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN PAGE -->
+        <!-- ================================================= -->
+
+        <Page
+            id="mainPage"
+            showHeader="false"
+            enableScrolling="true"
+            class="mainPage">
+
+            <content>
+
+                <!-- ========================================= -->
+                <!-- PAGE TITLE -->
+                <!-- ========================================= -->
+
+                <VBox class="pageHeader">
+
+                    <HBox
+                        justifyContent="SpaceBetween"
+                        alignItems="Center"
+                        wrap="Wrap">
+
+                        <VBox>
+
+                            <Title
+                                text="Supply Chain Risk Command Center"
+                                level="H1"/>
+
+                            <Text
+                                text="AI-powered multi-tier disruption intelligence"
+                                class="subtitleText"/>
+
+                        </VBox>
+
+                        <ObjectStatus
+                            text="SYSTEM ONLINE"
+                            state="Success"
+                            class="systemStatus"/>
+
+                    </HBox>
+
+                </VBox>
+
+
+                <!-- ========================================= -->
+                <!-- KPI ROW -->
+                <!-- ========================================= -->
+
+                <HBox
+                    class="kpiRow"
+                    wrap="Wrap">
+
+                    <VBox class="kpiCard">
+
+                        <Text
+                            text="SUPPLIERS"
+                            class="kpiLabel"/>
+
+                        <Title
+                            id="supplierCount"
+                            text="0"
+                            level="H2"
+                            class="kpiValue"/>
+
+                        <Text
+                            text="Network partners"/>
+
+                    </VBox>
+
+
+                    <VBox class="kpiCard">
+
+                        <Text
+                            text="COMPONENTS"
+                            class="kpiLabel"/>
+
+                        <Title
+                            id="componentCount"
+                            text="0"
+                            level="H2"
+                            class="kpiValue"/>
+
+                        <Text
+                            text="Tracked materials"/>
+
+                    </VBox>
+
+
+                    <VBox class="kpiCard">
+
+                        <Text
+                            text="INVENTORY SIGNALS"
+                            class="kpiLabel"/>
+
+                        <Title
+                            id="inventoryCount"
+                            text="0"
+                            level="H2"
+                            class="kpiValue"/>
+
+                        <Text
+                            text="Inventory records"/>
+
+                    </VBox>
+
+
+                    <VBox
+                        class="kpiCard criticalCard">
+
+                        <Text
+                            text="ACTIVE DISRUPTIONS"
+                            class="kpiLabel"/>
+
+                        <Title
+                            id="disruptionCount"
+                            text="0"
+                            level="H2"
+                            class="kpiValue"/>
+
+                        <Text
+                            text="Requires attention"/>
+
+                    </VBox>
+
+
+                    <VBox class="kpiCard">
+
+                        <Text
+                            text="NETWORK NODES"
+                            class="kpiLabel"/>
+
+                        <Title
+                            id="nodeCount"
+                            text="0"
+                            level="H2"
+                            class="kpiValue"/>
+
+                        <Text
+                            text="Multi-tier visibility"/>
+
+                    </VBox>
+
+                </HBox>
+
+
+                <!-- ========================================= -->
+                <!-- ACTIVE DISRUPTION -->
+                <!-- ========================================= -->
+
+                <Panel
+                    headerText="ACTIVE DISRUPTION"
+                    class="sectionPanel disruptionPanel">
+
+                    <HBox
+                        class="disruptionContent"
+                        justifyContent="SpaceBetween"
+                        alignItems="Center"
+                        wrap="Wrap">
+
+                        <VBox>
+
+                            <Title
+                                id="disruptionTitle"
+                                text="Loading..."
+                                level="H3"/>
+
+                            <Text
+                                id="disruptionLocation"
+                                text=""/>
+
+                        </VBox>
+
+
+                        <VBox class="disruptionMetric">
+
+                            <Text text="SEVERITY"/>
+
+                            <ObjectStatus
+                                id="disruptionSeverity"
+                                text="HIGH"
+                                state="Error"/>
+
+                        </VBox>
+
+
+                        <VBox class="disruptionMetric">
+
+                            <Text text="DURATION"/>
+
+                            <Title
+                                id="disruptionDuration"
+                                text="-"
+                                level="H4"/>
+
+                        </VBox>
+
+                    </HBox>
+
+                </Panel>
+
+
+                <!-- ========================================= -->
+                <!-- RISK OVERVIEW -->
+                <!-- ========================================= -->
+
+                <Panel
+                    headerText="Risk Overview"
+                    class="sectionPanel">
+
+                    <HBox
+                        class="overviewRow"
+                        wrap="Wrap">
+
+                        <VBox class="overviewCard">
+
+                            <Text
+                                text="CURRENT EXPOSURE"
+                                class="cardLabel"/>
+
+                            <ObjectStatus
+                                text="HIGH"
+                                state="Error"
+                                class="largeRisk"/>
+
+                            <Text
+                                text="Power IC supply disruption"
+                                class="mutedText"/>
+
+                        </VBox>
+
+
+                        <VBox class="overviewCard">
+
+                            <Text
+                                text="STOCKOUT EXPOSURE"
+                                class="cardLabel"/>
+
+                            <Title
+                                text="7 days"
+                                level="H2"/>
+
+                            <Text
+                                text="Inventory below normal lead time"
+                                class="mutedText"/>
+
+                        </VBox>
+
+
+                        <VBox class="overviewCard">
+
+                            <Text
+                                text="ALTERNATIVE SUPPLIER"
+                                class="cardLabel"/>
+
+                            <ObjectStatus
+                                text="AVAILABLE"
+                                state="Success"/>
+
+                            <Text
+                                text="Vendor Y • 5 day lead time"
+                                class="mutedText"/>
+
+                        </VBox>
+
+                    </HBox>
+
+                </Panel>
+
+
+                <!-- ========================================= -->
+                <!-- DEPENDENCY GRAPH -->
+                <!-- ========================================= -->
+
+                <Panel
+                    headerText="Multi-Tier Dependency Snapshot"
+                    class="sectionPanel">
+
+                    <HBox
+                        class="dependencyRow"
+                        justifyContent="Center"
+                        alignItems="Center"
+                        wrap="Wrap">
+
+                        <VBox class="dependencyNode">
+
+                            <Text text="TIER 3"/>
+
+                            <Title
+                                text="Shanghai Port"
+                                level="H4"/>
+
+                            <ObjectStatus
+                                text="DISRUPTION"
+                                state="Error"/>
+
+                        </VBox>
+
+
+                        <Text
+                            text="→"
+                            class="dependencyArrow"/>
+
+
+                        <VBox class="dependencyNode">
+
+                            <Text text="TIER 3"/>
+
+                            <Title
+                                text="SiliconTech"
+                                level="H4"/>
+
+                            <ObjectStatus
+                                text="EXPOSED"
+                                state="Warning"/>
+
+                        </VBox>
+
+
+                        <Text
+                            text="→"
+                            class="dependencyArrow"/>
+
+
+                        <VBox class="dependencyNode">
+
+                            <Text text="TIER 2"/>
+
+                            <Title
+                                text="PowerCore"
+                                level="H4"/>
+
+                            <ObjectStatus
+                                text="EXPOSED"
+                                state="Warning"/>
+
+                        </VBox>
+
+
+                        <Text
+                            text="→"
+                            class="dependencyArrow"/>
+
+
+                        <VBox class="dependencyNode">
+
+                            <Text text="TIER 1"/>
+
+                            <Title
+                                text="Alpha Electronics"
+                                level="H4"/>
+
+                            <ObjectStatus
+                                text="AT RISK"
+                                state="Error"/>
+
+                        </VBox>
+
+
+                        <Text
+                            text="→"
+                            class="dependencyArrow"/>
+
+
+                        <VBox class="dependencyNode">
+
+                            <Text text="FACTORY"/>
+
+                            <Title
+                                text="India Plant"
+                                level="H4"/>
+
+                            <ObjectStatus
+                                text="STOCKOUT"
+                                state="Error"/>
+
+                        </VBox>
+
+                    </HBox>
+
+                </Panel>
+
+
+                <!-- ========================================= -->
+                <!-- AGENT COMMAND CENTER -->
+                <!-- ========================================= -->
+
+                <Panel
+                    headerText="Agent Command Center"
+                    class="sectionPanel agentPanel">
+
+                    <VBox>
+
+                        <Text
+                            text="Execute the AI intelligence pipeline in sequence. Each completed agent unlocks the next stage."
+                            class="agentIntro"/>
+
+
+                        <!-- ================================= -->
+                        <!-- TRACE -->
+                        <!-- ================================= -->
+
+                        <Panel
+                            headerText="01  TRACE AGENT"
+                            class="agentCard traceCard">
+
+                            <VBox>
+
+                                <HBox
+                                    justifyContent="SpaceBetween"
+                                    alignItems="Center"
+                                    wrap="Wrap">
+
+                                    <VBox>
+
+                                        <Title
+                                            text="Multi-tier Dependency Analysis"
+                                            level="H3"/>
+
+                                        <Text
+                                            text="Identify every downstream node affected by the disruption."/>
+
+                                    </VBox>
+
+
+                                    <ObjectStatus
+                                        id="traceStatus"
+                                        text="Ready"
+                                        state="Information"/>
+
+                                </HBox>
+
+
+                                <HBox
+                                    class="resultGrid"
+                                    wrap="Wrap">
+
+                                    <VBox class="resultMetric">
+
+                                        <Text
+                                            text="AFFECTED NODES"/>
+
+                                        <Title
+                                            id="traceCount"
+                                            text="-"
+                                            level="H3"/>
+
+                                    </VBox>
+
+
+                                    <VBox
+                                        class="resultMetric wideMetric">
+
+                                        <Text
+                                            text="TRACE SUMMARY"/>
+
+                                        <Text
+                                            id="traceSummary"
+                                            text="Waiting for Trace Agent..."/>
+
+                                    </VBox>
+
+                                </HBox>
+
+
+                                <VBox class="agentResultBox">
+
+                                    <Text
+                                        text="AGENT OUTPUT"
+                                        class="resultLabel"/>
+
+                                    <Text
+                                        id="traceResult"
+                                        text="Trace Agent has not been executed."
+                                        class="resultText"/>
+
+                                </VBox>
+
+
+                                <Button
+                                    id="traceButton"
+                                    text="Send to Trace Agent"
+                                    type="Emphasized"
+                                    icon="sap-icon://process"
+                                    press=".onTrace"
+                                    class="agentButton"/>
+
+                            </VBox>
+
+                        </Panel>
+
+
+                        <!-- ================================= -->
+                        <!-- PREDICT -->
+                        <!-- ================================= -->
+
+                        <Panel
+                            headerText="02  PREDICT AGENT"
+                            class="agentCard predictCard">
+
+                            <VBox>
+
+                                <HBox
+                                    justifyContent="SpaceBetween"
+                                    alignItems="Center"
+                                    wrap="Wrap">
+
+                                    <VBox>
+
+                                        <Title
+                                            text="Inventory &amp; Stockout Prediction"
+                                            level="H3"/>
+
+                                        <Text
+                                            text="Calculate time-to-stockout and disruption exposure."/>
+
+                                    </VBox>
+
+
+                                    <ObjectStatus
+                                        id="predictionStatus"
+                                        text="Locked"
+                                        state="None"/>
+
+                                </HBox>
+
+
+                                <HBox
+                                    class="resultGrid"
+                                    wrap="Wrap">
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="COMPONENT"/>
+
+                                        <Title
+                                            id="predictionComponent"
+                                            text="-"
+                                            level="H4"/>
+
+                                    </VBox>
+
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="FACTORY"/>
+
+                                        <Title
+                                            id="predictionFactory"
+                                            text="-"
+                                            level="H4"/>
+
+                                    </VBox>
+
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="INVENTORY"/>
+
+                                        <Title
+                                            id="inventoryDays"
+                                            text="-"
+                                            level="H3"/>
+
+                                        <Text text="days"/>
+
+                                    </VBox>
+
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="LEAD TIME"/>
+
+                                        <Title
+                                            id="leadTimeDays"
+                                            text="-"
+                                            level="H3"/>
+
+                                        <Text text="days"/>
+
+                                    </VBox>
+
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="STOCKOUT GAP"/>
+
+                                        <Title
+                                            id="stockoutGap"
+                                            text="-"
+                                            level="H3"/>
+
+                                        <Text text="days"/>
+
+                                    </VBox>
+
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="RISK"/>
+
+                                        <ObjectStatus
+                                            id="riskLevel"
+                                            text="-"
+                                            state="Error"/>
+
+                                    </VBox>
+
+                                </HBox>
+
+
+                                <VBox class="agentResultBox">
+
+                                    <Text
+                                        text="AGENT OUTPUT"
+                                        class="resultLabel"/>
+
+                                    <Text
+                                        id="predictionResult"
+                                        text="Prediction Agent is locked until Trace completes."
+                                        class="resultText"/>
+
+                                </VBox>
+
+
+                                <Button
+                                    id="predictButton"
+                                    text="Send to Predict Agent"
+                                    type="Emphasized"
+                                    icon="sap-icon://trend-up"
+                                    press=".onPredict"
+                                    enabled="false"
+                                    class="agentButton"/>
+
+                            </VBox>
+
+                        </Panel>
+
+
+                        <!-- ================================= -->
+                        <!-- RECOMMEND -->
+                        <!-- ================================= -->
+
+                        <Panel
+                            headerText="03  RECOMMEND AGENT"
+                            class="agentCard recommendCard">
+
+                            <VBox>
+
+                                <HBox
+                                    justifyContent="SpaceBetween"
+                                    alignItems="Center"
+                                    wrap="Wrap">
+
+                                    <VBox>
+
+                                        <Title
+                                            text="Alternative Supplier Optimization"
+                                            level="H3"/>
+
+                                        <Text
+                                            text="Evaluate suppliers against lead time, risk and readiness."/>
+
+                                    </VBox>
+
+
+                                    <ObjectStatus
+                                        id="recommendationStatus"
+                                        text="Locked"
+                                        state="None"/>
+
+                                </HBox>
+
+
+                                <HBox
+                                    class="resultGrid"
+                                    wrap="Wrap">
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="RECOMMENDED SUPPLIER"/>
+
+                                        <Title
+                                            id="recommendedSupplier"
+                                            text="-"
+                                            level="H4"/>
+
+                                    </VBox>
+
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="COMPONENT"/>
+
+                                        <Title
+                                            id="recommendComponent"
+                                            text="-"
+                                            level="H4"/>
+
+                                    </VBox>
+
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="LEAD TIME"/>
+
+                                        <Title
+                                            id="recommendLeadTime"
+                                            text="-"
+                                            level="H3"/>
+
+                                        <Text text="days"/>
+
+                                    </VBox>
+
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="RISK"/>
+
+                                        <ObjectStatus
+                                            id="recommendRisk"
+                                            text="-"
+                                            state="Success"/>
+
+                                    </VBox>
+
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="SCORE"/>
+
+                                        <Title
+                                            id="recommendScore"
+                                            text="-"
+                                            level="H3"/>
+
+                                    </VBox>
+
+
+                                    <VBox class="resultMetric">
+
+                                        <Text text="PRE-VETTED"/>
+
+                                        <ObjectStatus
+                                            id="preVetted"
+                                            text="-"
+                                            state="Success"/>
+
+                                    </VBox>
+
+                                </HBox>
+
+
+                                <VBox class="agentResultBox">
+
+                                    <Text
+                                        text="AGENT OUTPUT"
+                                        class="resultLabel"/>
+
+                                    <Text
+                                        id="recommendResult"
+                                        text="Recommendation Agent is locked until Prediction completes."
+                                        class="resultText"/>
+
+                                </VBox>
+
+
+                                <Button
+                                    id="recommendButton"
+                                    text="Send to Recommend Agent"
+                                    type="Emphasized"
+                                    icon="sap-icon://supplier"
+                                    press=".onRecommend"
+                                    enabled="false"
+                                    class="agentButton"/>
+
+                            </VBox>
+
+                        </Panel>
+
+
+                        <!-- ================================= -->
+                        <!-- SAFEGUARD -->
+                        <!-- ================================= -->
+
+                        <Panel
+                            headerText="04  SAFEGUARD &amp; HUMAN APPROVAL"
+                            class="agentCard safeguardCard">
+
+                            <VBox>
+
+                                <HBox
+                                    justifyContent="SpaceBetween"
+                                    alignItems="Center"
+                                    wrap="Wrap">
+
+                                    <VBox>
+
+                                        <Title
+                                            text="Governed Mitigation Decision"
+                                            level="H3"/>
+
+                                        <Text
+                                            text="Create an auditable decision requiring human approval."/>
+
+                                    </VBox>
+
+
+                                    <ObjectStatus
+                                        id="safeguardStatus"
+                                        text="Locked"
+                                        state="None"/>
+
+                                </HBox>
+
+
+                                <Button
+                                    id="safeguardButton"
+                                    text="Send to Safeguard Agent"
+                                    type="Emphasized"
+                                    icon="sap-icon://shield"
+                                    press=".onSafeguard"
+                                    enabled="false"
+                                    class="agentButton"/>
+
+
+                                <VBox class="approvalBox">
+
+                                    <Text
+                                        text="MITIGATION DECISION"
+                                        class="resultLabel"/>
+
+
+                                    <Text
+                                        id="decisionText"
+                                        text="No mitigation decision has been created."
+                                        class="decisionText"/>
+
+
+                                    <HBox
+                                        class="decisionMeta"
+                                        justifyContent="SpaceBetween"
+                                        wrap="Wrap">
+
+                                        <VBox>
+
+                                            <Text text="DECISION ID"/>
+
+                                            <Text
+                                                id="decisionId"
+                                                text="-"/>
+
+                                        </VBox>
+
+
+                                        <VBox>
+
+                                            <Text text="STATUS"/>
+
+                                            <ObjectStatus
+                                                id="decisionStatus"
+                                                text="WAITING"
+                                                state="None"/>
+
+                                        </VBox>
+
+                                    </HBox>
+
+
+                                    <HBox
+                                        class="approvalActions"
+                                        wrap="Wrap">
+
+                                        <Button
+                                            id="approvalButton"
+                                            text="Approve Decision"
+                                            type="Accept"
+                                            icon="sap-icon://accept"
+                                            press=".onApprove"
+                                            enabled="false"/>
+
+
+                                        <Button
+                                            id="rejectButton"
+                                            text="Reject"
+                                            type="Reject"
+                                            icon="sap-icon://decline"
+                                            press=".onReject"
+                                            enabled="false"/>
+
+                                    </HBox>
+
+                                </VBox>
+
+                            </VBox>
+
+                        </Panel>
+
+                    </VBox>
+
+                </Panel>
+
+            </content>
+
+        </Page>
+
+    </VBox>
+
+</mvc:View>

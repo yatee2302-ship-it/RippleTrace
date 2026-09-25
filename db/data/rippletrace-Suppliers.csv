@@ -1,0 +1,11 @@
+ID,name,tier,location,country,status,confidence
+SUP001,Alpha Electronics,1,Bangalore,India,Confirmed,99.00
+SUP002,PowerCore Components,2,Shanghai,China,Inferred,87.00
+SUP003,SiliconTech Industries,3,Shenzhen,China,Confirmed,95.00
+SUP004,Vendor Y,2,Singapore,Singapore,Confirmed,96.00
+SUP005,Delta Micro Systems,1,Pune,India,Confirmed,94.00
+SUP006,Northstar Semiconductors,2,Taipei,Taiwan,Confirmed,92.00
+SUP007,Atlas Circuit Works,2,Ho Chi Minh City,Vietnam,Confirmed,90.00
+SUP008,EuroLogic Components,3,Munich,Germany,Confirmed,88.00
+SUP009,Pacific Memory Group,2,Tokyo,Japan,Confirmed,91.00
+SUP010,Redwood Embedded,1,Austin,United States,Inferred,84.00

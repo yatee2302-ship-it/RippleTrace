@@ -1,0 +1,298 @@
+
+/*
+ * RippleTrace UI Polish V4
+ *
+ * VISUAL ONLY.
+ *
+ * This script does NOT:
+ * - call APIs
+ * - change agent execution
+ * - change CAP
+ * - change database
+ * - change approval logic
+ *
+ * It only removes visible AGENT OUTPUT containers
+ * after the dashboard renders them.
+ */
+
+(function () {
+
+    "use strict";
+
+    console.log("RippleTrace UI Polish V4 loaded");
+
+
+    /* =====================================================
+       Hide the actual AGENT OUTPUT box
+       ===================================================== */
+
+    function hideAgentOutputBoxes() {
+
+        /*
+         * First handle known CSS classes.
+         */
+
+        const knownSelectors = [
+            ".agent-output",
+            ".output-box",
+            "[class*='agent-output']",
+            "[class*='output-box']",
+            "[class*='agent_output']",
+            "[class*='output_box']"
+        ];
+
+        knownSelectors.forEach(function (selector) {
+
+            document
+                .querySelectorAll(selector)
+                .forEach(function (element) {
+
+                    element.style.setProperty(
+                        "display",
+                        "none",
+                        "important"
+                    );
+
+                });
+
+        });
+
+
+        /*
+         * Now handle the actual rendered text.
+         *
+         * This is the important fallback because the
+         * existing dashboard may not use the class names
+         * above.
+         */
+
+        const elements =
+            document.querySelectorAll(
+                "div,section,article,fieldset"
+            );
+
+
+        elements.forEach(function (element) {
+
+            const directText =
+                Array.from(element.childNodes)
+                    .filter(function (node) {
+                        return node.nodeType === Node.TEXT_NODE;
+                    })
+                    .map(function (node) {
+                        return node.textContent.trim();
+                    })
+                    .join(" ")
+                    .toUpperCase();
+
+
+            /*
+             * Look for an actual AGENT OUTPUT label.
+             */
+
+            if (
+                directText === "AGENT OUTPUT" ||
+                directText === "AGENT OUTPUT:"
+            ) {
+
+                /*
+                 * Usually the output label and output text
+                 * live inside this parent container.
+                 */
+
+                let box = element;
+
+                for (let i = 0; i < 3; i++) {
+
+                    if (!box.parentElement) {
+                        break;
+                    }
+
+                    const parent = box.parentElement;
+
+                    const parentText =
+                        (parent.innerText || "")
+                            .trim()
+                            .toUpperCase();
+
+
+                    /*
+                     * Don't climb into the entire agent card.
+                     */
+
+                    if (
+                        parentText.length > 1500 ||
+                        parent.querySelector("button")
+                    ) {
+                        break;
+                    }
+
+                    box = parent;
+                }
+
+
+                box.style.setProperty(
+                    "display",
+                    "none",
+                    "important"
+                );
+
+                box.style.setProperty(
+                    "visibility",
+                    "hidden",
+                    "important"
+                );
+
+                box.style.setProperty(
+                    "height",
+                    "0",
+                    "important"
+                );
+
+                box.style.setProperty(
+                    "min-height",
+                    "0",
+                    "important"
+                );
+
+                box.style.setProperty(
+                    "margin",
+                    "0",
+                    "important"
+                );
+
+                box.style.setProperty(
+                    "padding",
+                    "0",
+                    "important"
+                );
+
+                box.style.setProperty(
+                    "border",
+                    "0",
+                    "important"
+                );
+
+            }
+
+        });
+
+    }
+
+
+    /* =====================================================
+       Improve readability of extremely faint text
+       ===================================================== */
+
+    function improveReadability() {
+
+        const agentCards =
+            document.querySelectorAll(
+                ".agent-card, .agent-panel, .agent-container"
+            );
+
+
+        agentCards.forEach(function (card) {
+
+            card.style.setProperty(
+                "color",
+                "#dce7f1",
+                "important"
+            );
+
+
+            /*
+             * Fix elements that inherited the old light theme.
+             */
+
+            card.querySelectorAll(
+                "p, label, small"
+            ).forEach(function (element) {
+
+                element.style.setProperty(
+                    "color",
+                    "#91a5b6",
+                    "important"
+                );
+
+                element.style.setProperty(
+                    "opacity",
+                    "1",
+                    "important"
+                );
+
+            });
+
+
+            card.querySelectorAll(
+                "h1,h2,h3,h4,h5,strong"
+            ).forEach(function (element) {
+
+                element.style.setProperty(
+                    "color",
+                    "#edf5fb",
+                    "important"
+                );
+
+                element.style.setProperty(
+                    "opacity",
+                    "1",
+                    "important"
+                );
+
+            });
+
+        });
+
+    }
+
+
+    /* =====================================================
+       Run now
+       ===================================================== */
+
+    function applyV4() {
+
+        hideAgentOutputBoxes();
+
+        improveReadability();
+
+    }
+
+
+    applyV4();
+
+
+    /* =====================================================
+       Reapply after existing app renders agent results
+       ===================================================== */
+
+    const observer =
+        new MutationObserver(function () {
+
+            applyV4();
+
+        });
+
+
+    observer.observe(
+        document.body,
+        {
+            childList: true,
+            subtree: true
+        }
+    );
+
+
+    /*
+     * Extra safety:
+     * reapply periodically without touching the backend.
+     */
+
+    setInterval(
+        applyV4,
+        1000
+    );
+
+
+})();

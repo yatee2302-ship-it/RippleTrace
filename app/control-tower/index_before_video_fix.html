@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>RippleTrace | Supply Chain Risk Command Center</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                RT
+            </div>
+
+            <div class="brand-text">
+                <div class="brand-name">
+                    RippleTrace
+                </div>
+
+                <div class="brand-subtitle">
+                    Supply Chain Risk Command Center
+                </div>
+            </div>
+
+        </div>
+
+        <div class="top-right">
+
+            <div class="online">
+                <span class="online-dot"></span>
+                SYSTEM ONLINE
+            </div>
+
+            <div class="top-icon">⌕</div>
+            <div class="top-icon">◔</div>
+
+            <div class="avatar">
+                RT
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- PAGE HEADER -->
+
+        <section class="page-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    INTELLIGENT SUPPLY NETWORK
+                </div>
+
+                <h1>
+                    Supply Chain Risk
+                    <span>Command Center</span>
+                </h1>
+
+                <p>
+                    AI-powered multi-tier disruption intelligence,
+                    prediction and governed mitigation.
+                </p>
+
+            </div>
+
+            <div class="live-status">
+
+                <div>
+                    LIVE NETWORK MONITORING
+                </div>
+
+                <strong id="lastUpdated">
+                    Connecting...
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- KPI -->
+
+        <section class="kpi-grid">
+
+            <div class="kpi">
+
+                <div class="kpi-header">
+                    <span>SUPPLIERS</span>
+                    <b>⌘</b>
+                </div>
+
+                <strong id="supplierCount">-</strong>
+
+                <small>
+                    Network partners
+                </small>
+
+            </div>
+
+
+            <div class="kpi">
+
+                <div class="kpi-header">
+                    <span>COMPONENTS</span>
+                    <b>◆</b>
+                </div>
+
+                <strong id="componentCount">-</strong>
+
+                <small>
+                    Critical materials
+                </small>
+
+            </div>
+
+
+            <div class="kpi">
+
+                <div class="kpi-header">
+                    <span>INVENTORY SIGNALS</span>
+                    <b>▣</b>
+                </div>
+
+                <strong id="inventoryCount">-</strong>
+
+                <small>
+                    Active inventory records
+                </small>
+
+            </div>
+
+
+            <div class="kpi danger">
+
+                <div class="kpi-header">
+                    <span>ACTIVE DISRUPTIONS</span>
+                    <b>!</b>
+                </div>
+
+                <strong id="disruptionCount">-</strong>
+
+                <small>
+                    Requires attention
+                </small>
+
+            </div>
+
+
+            <div class="kpi">
+
+                <div class="kpi-header">
+                    <span>NETWORK NODES</span>
+                    <b>◎</b>
+                </div>
+
+                <strong id="nodeCount">-</strong>
+
+                <small>
+                    Multi-tier visibility
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- DISRUPTION -->
+
+        <section class="disruption">
+
+            <div class="disruption-symbol">
+                !
+            </div>
+
+            <div class="disruption-main">
+
+                <label>ACTIVE DISRUPTION</label>
+
+                <h3 id="disruptionTitle">
+                    Loading disruption...
+                </h3>
+
+                <p id="disruptionLocation">
+                    Loading...
+                </p>
+
+            </div>
+
+            <div class="disruption-stat">
+
+                <label>SEVERITY</label>
+
+                <strong id="disruptionSeverity">
+                    HIGH
+                </strong>
+
+            </div>
+
+            <div class="disruption-stat">
+
+                <label>DURATION</label>
+
+                <strong id="disruptionDuration">
+                    -
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- OVERVIEW -->
+
+        <section class="two-column">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Risk Overview</h2>
+                        <p>Current network exposure</p>
+                    </div>
+
+                    <span class="badge red">
+                        HIGH RISK
+                    </span>
+
+                </div>
+
+                <div class="risk-content">
+
+                    <div class="risk-circle">
+                        <div>
+                            <strong>HIGH</strong>
+                            <span>Exposure</span>
+                        </div>
+                    </div>
+
+                    <div class="risk-list">
+
+                        <div>
+                            <label>PRIMARY EXPOSURE</label>
+                            <strong>Power IC</strong>
+                        </div>
+
+                        <div>
+                            <label>STOCKOUT GAP</label>
+                            <strong class="red-text">
+                                7 days
+                            </strong>
+                        </div>
+
+                        <div>
+                            <label>NETWORK IMPACT</label>
+                            <strong>6 nodes</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <h2>Mitigation Readiness</h2>
+                        <p>Alternate supplier availability</p>
+                    </div>
+
+                    <span class="badge green">
+                        AVAILABLE
+                    </span>
+
+                </div>
+
+                <div class="supplier">
+
+                    <div class="supplier-logo">
+                        VY
+                    </div>
+
+                    <div class="supplier-name">
+
+                        <strong>
+                            Vendor Y
+                        </strong>
+
+                        <span>
+                            SUP004 · Power IC
+                        </span>
+
+                    </div>
+
+                    <div class="supplier-stat">
+                        <label>LEAD TIME</label>
+                        <strong>5 days</strong>
+                    </div>
+
+                    <div class="supplier-stat">
+                        <label>RISK</label>
+                        <strong class="green-text">
+                            LOW
+                        </strong>
+                    </div>
+
+                    <div class="supplier-stat">
+                        <label>SCORE</label>
+                        <strong>100</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NETWORK -->
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>Multi-Tier Dependency Network</h2>
+                    <p>
+                        Disruption propagation across the supply chain
+                    </p>
+                </div>
+
+                <span class="badge blue">
+                    7 NODES
+                </span>
+
+            </div>
+
+            <div class="network">
+
+                <div class="network-node critical">
+                    <small>TIER 3</small>
+                    <strong>Shanghai Port</strong>
+                    <span>DISRUPTION</span>
+                </div>
+
+                <div class="network-arrow">→</div>
+
+                <div class="network-node warning">
+                    <small>TIER 3</small>
+                    <strong>SiliconTech</strong>
+                    <span>EXPOSED</span>
+                </div>
+
+                <div class="network-arrow">→</div>
+
+                <div class="network-node warning">
+                    <small>TIER 2</small>
+                    <strong>PowerCore</strong>
+                    <span>EXPOSED</span>
+                </div>
+
+                <div class="network-arrow">→</div>
+
+                <div class="network-node critical">
+                    <small>TIER 1</small>
+                    <strong>Alpha Electronics</strong>
+                    <span>AT RISK</span>
+                </div>
+
+                <div class="network-arrow">→</div>
+
+                <div class="network-node critical">
+                    <small>FACTORY</small>
+                    <strong>India Plant</strong>
+                    <span>STOCKOUT RISK</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AGENTS -->
+
+        <section class="agents-section">
+
+            <div class="section-title">
+
+                <div>
+                    <div class="eyebrow">
+                        AGENTIC INTELLIGENCE
+                    </div>
+
+                    <h2>
+                        Agent Command Center
+                    </h2>
+
+                    <p>
+                        Detect → Trace → Predict → Recommend → Safeguard
+                    </p>
+                </div>
+
+                <div class="pipeline">
+
+                    <span class="pipeline-active">01</span>
+                    <i></i>
+                    <span id="pipe2">02</span>
+                    <i></i>
+                    <span id="pipe3">03</span>
+                    <i></i>
+                    <span id="pipe4">04</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRACE -->
+
+            <article class="agent trace">
+
+                <div class="agent-header">
+
+                    <div class="agent-number">
+                        01
+                    </div>
+
+                    <div class="agent-title">
+
+                        <h3>TRACE AGENT</h3>
+
+                        <p>
+                            Multi-tier dependency analysis
+                        </p>
+
+                    </div>
+
+                    <div
+                        class="agent-status ready"
+                        id="traceStatus">
+
+                        READY
+
+                    </div>
+
+                </div>
+
+
+                <div class="agent-body">
+
+                    <div class="agent-description">
+
+                        Identify every downstream node affected
+                        by the active disruption.
+
+                    </div>
+
+
+                    <div class="metrics">
+
+                        <div class="metric">
+
+                            <label>AFFECTED NODES</label>
+
+                            <strong id="traceCount">-</strong>
+
+                        </div>
+
+                        <div class="metric wide">
+
+                            <label>TRACE SUMMARY</label>
+
+                            <strong id="traceSummary">
+                                Waiting for Trace Agent...
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="output">
+
+                        <label>AGENT OUTPUT</label>
+
+                        <pre id="traceResult">
+Trace Agent has not been executed.
+                        </pre>
+
+                    </div>
+
+
+                    <button
+                        id="traceButton"
+                        class="agent-button primary"
+                        onclick="runTrace()">
+
+                        ▶ SEND TO TRACE AGENT
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- PREDICT -->
+
+            <article class="agent predict">
+
+                <div class="agent-header">
+
+                    <div class="agent-number">
+                        02
+                    </div>
+
+                    <div class="agent-title">
+
+                        <h3>PREDICT AGENT</h3>
+
+                        <p>
+                            Inventory & stockout prediction
+                        </p>
+
+                    </div>
+
+                    <div
+                        class="agent-status locked"
+                        id="predictionStatus">
+
+                        LOCKED
+
+                    </div>
+
+                </div>
+
+
+                <div class="agent-body">
+
+                    <div class="agent-description">
+
+                        Calculate time-to-stockout and disruption exposure.
+
+                    </div>
+
+
+                    <div class="metrics">
+
+                        <div class="metric">
+                            <label>COMPONENT</label>
+                            <strong id="predictionComponent">-</strong>
+                        </div>
+
+                        <div class="metric">
+                            <label>FACTORY</label>
+                            <strong id="predictionFactory">-</strong>
+                        </div>
+
+                        <div class="metric">
+                            <label>INVENTORY</label>
+                            <strong id="inventoryDays">-</strong>
+                            <small>days</small>
+                        </div>
+
+                        <div class="metric">
+                            <label>LEAD TIME</label>
+                            <strong id="leadTimeDays">-</strong>
+                            <small>days</small>
+                        </div>
+
+                        <div class="metric">
+                            <label>STOCKOUT GAP</label>
+                            <strong id="stockoutGap">-</strong>
+                            <small>days</small>
+                        </div>
+
+                        <div class="metric">
+                            <label>RISK</label>
+                            <strong id="riskLevel">-</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="output">
+
+                        <label>AGENT OUTPUT</label>
+
+                        <pre id="predictionResult">
+Prediction Agent is locked until Trace completes.
+                        </pre>
+
+                    </div>
+
+
+                    <button
+                        id="predictButton"
+                        class="agent-button"
+                        onclick="runPrediction()"
+                        disabled>
+
+                        ▶ SEND TO PREDICT AGENT
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- RECOMMEND -->
+
+            <article class="agent recommend">
+
+                <div class="agent-header">
+
+                    <div class="agent-number">
+                        03
+                    </div>
+
+                    <div class="agent-title">
+
+                        <h3>RECOMMEND AGENT</h3>
+
+                        <p>
+                            Alternative supplier optimization
+                        </p>
+
+                    </div>
+
+                    <div
+                        class="agent-status locked"
+                        id="recommendationStatus">
+
+                        LOCKED
+
+                    </div>
+
+                </div>
+
+
+                <div class="agent-body">
+
+                    <div class="agent-description">
+
+                        Evaluate alternate suppliers against
+                        lead time, risk and readiness.
+
+                    </div>
+
+
+                    <div class="metrics">
+
+                        <div class="metric">
+                            <label>SUPPLIER</label>
+                            <strong id="recommendedSupplier">-</strong>
+                        </div>
+
+                        <div class="metric">
+                            <label>COMPONENT</label>
+                            <strong id="recommendComponent">-</strong>
+                        </div>
+
+                        <div class="metric">
+                            <label>LEAD TIME</label>
+                            <strong id="recommendLeadTime">-</strong>
+                            <small>days</small>
+                        </div>
+
+                        <div class="metric">
+                            <label>RISK</label>
+                            <strong
+                                id="recommendRisk"
+                                class="green-text">
+                                -
+                            </strong>
+                        </div>
+
+                        <div class="metric">
+                            <label>SCORE</label>
+                            <strong id="recommendScore">-</strong>
+                        </div>
+
+                        <div class="metric">
+                            <label>PRE-VETTED</label>
+                            <strong
+                                id="preVetted"
+                                class="green-text">
+                                -
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="output">
+
+                        <label>AGENT OUTPUT</label>
+
+                        <pre id="recommendResult">
+Recommendation Agent is locked until Prediction completes.
+                        </pre>
+
+                    </div>
+
+
+                    <button
+                        id="recommendButton"
+                        class="agent-button"
+                        onclick="runRecommendation()"
+                        disabled>
+
+                        ▶ SEND TO RECOMMEND AGENT
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- SAFEGUARD -->
+
+            <article class="agent safeguard">
+
+                <div class="agent-header">
+
+                    <div class="agent-number">
+                        04
+                    </div>
+
+                    <div class="agent-title">
+
+                        <h3>SAFEGUARD AGENT</h3>
+
+                        <p>
+                            Governed mitigation & human approval
+                        </p>
+
+                    </div>
+
+                    <div
+                        class="agent-status locked"
+                        id="safeguardStatus">
+
+                        LOCKED
+
+                    </div>
+
+                </div>
+
+
+                <div class="agent-body">
+
+                    <div class="agent-description">
+
+                        Create an auditable mitigation decision
+                        requiring human approval.
+
+                    </div>
+
+
+                    <button
+                        id="safeguardButton"
+                        class="agent-button"
+                        onclick="runSafeguard()"
+                        disabled>
+
+                        ▶ SEND TO SAFEGUARD AGENT
+
+                    </button>
+
+
+                    <div class="approval">
+
+                        <div class="approval-title">
+                            HUMAN APPROVAL REQUIRED
+                        </div>
+
+                        <p id="decisionText">
+                            No mitigation decision has been created.
+                        </p>
+
+                        <div class="decision-info">
+
+                            <div>
+                                <label>DECISION ID</label>
+                                <strong id="decisionId">-</strong>
+                            </div>
+
+                            <div>
+                                <label>STATUS</label>
+                                <strong id="decisionStatus">
+                                    WAITING
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="approval-buttons">
+
+                            <button
+                                id="approvalButton"
+                                class="approve"
+                                onclick="approveDecision()"
+                                disabled>
+
+                                ✓ APPROVE DECISION
+
+                            </button>
+
+                            <button
+                                id="rejectButton"
+                                class="reject"
+                                onclick="rejectDecision()"
+                                disabled>
+
+                                ✕ REJECT
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+    
+    
+    
+    
+    
+    <script src="realtime-monitor.js"></script>
+    <script src="reports-final.js"></script>
+</body>
+</html>

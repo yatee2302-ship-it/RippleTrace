@@ -1,0 +1,13 @@
+{
+  "name": "RippleTrace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RippleTrace CAP supply chain risk demo",
+  "scripts": {
+    "start": "cds watch"
+  },
+  "dependencies": {
+    "@cap-js/sqlite": "^3.1.1",
+    "@sap/cds": "^10.0.0"
+  }
+}

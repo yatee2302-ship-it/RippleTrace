@@ -1,0 +1,23 @@
+ID,nodeType,name,tier,location,status,confidence
+NODE001,FACTORY,India Electronics Plant,0,Bangalore India,Confirmed,99.00
+NODE002,SUPPLIER,Tier-1 Alpha Electronics,1,Bangalore India,Confirmed,99.00
+NODE003,SUPPLIER,Tier-2 PowerCore Components,2,Shanghai China,Inferred,87.00
+NODE004,COMPONENT,Power IC,0,Global,Critical,95.00
+NODE005,SUPPLIER,Tier-3 SiliconTech Industries,3,Shenzhen China,Confirmed,95.00
+NODE006,PORT,Shanghai Port,0,Shanghai China,Confirmed,99.00
+NODE007,SUPPLIER,Vendor Y,2,Singapore Singapore,Confirmed,96.00
+NODE008,FACTORY,Western Assembly Plant,0,Pune India,Confirmed,94.00
+NODE009,FACTORY,North America Systems Plant,0,Austin United States,Confirmed,91.00
+NODE010,SUPPLIER,Delta Micro Systems,1,Pune India,Confirmed,94.00
+NODE011,SUPPLIER,Northstar Semiconductors,2,Taipei Taiwan,Confirmed,92.00
+NODE012,SUPPLIER,Atlas Circuit Works,2,Ho Chi Minh City Vietnam,Confirmed,90.00
+NODE013,SUPPLIER,EuroLogic Components,3,Munich Germany,Confirmed,88.00
+NODE014,SUPPLIER,Pacific Memory Group,2,Tokyo Japan,Confirmed,91.00
+NODE015,SUPPLIER,Redwood Embedded,1,Austin United States,Inferred,84.00
+NODE016,COMPONENT,PCB Controller,0,Global,At Risk,89.00
+NODE017,COMPONENT,Memory Module,0,Global,Healthy,93.00
+NODE018,COMPONENT,Power Management IC,0,Global,Critical,90.00
+NODE019,COMPONENT,High-Speed Connector,0,Global,At Risk,86.00
+NODE020,COMPONENT,Industrial Sensor,0,Global,Healthy,92.00
+NODE021,PORT,Taipei Port,0,Taipei Taiwan,Confirmed,94.00
+NODE022,PORT,Ho Chi Minh Port,0,Ho Chi Minh City Vietnam,Confirmed,91.00

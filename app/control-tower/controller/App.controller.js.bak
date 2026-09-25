@@ -1,0 +1,389 @@
+sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageToast",
+    "sap/m/MessageBox"
+], function (
+    Controller,
+    MessageToast,
+    MessageBox
+) {
+
+    "use strict";
+
+    return Controller.extend("rippletrace.controller.App", {
+
+        onInit: async function () {
+
+            console.log("RippleTrace Control Tower started");
+
+            await this.loadDashboard();
+
+        },
+
+
+        async getJSON(endpoint) {
+
+            const response = await fetch(
+                "/api/risk/" + endpoint
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    "Failed to load " + endpoint
+                );
+            }
+
+            return response.json();
+        },
+
+
+        async loadDashboard() {
+
+            try {
+
+                const [
+                    suppliers,
+                    components,
+                    inventory,
+                    disruptions,
+                    nodes
+                ] = await Promise.all([
+
+                    this.getJSON("Suppliers"),
+                    this.getJSON("Components"),
+                    this.getJSON("Inventory"),
+                    this.getJSON("Disruptions"),
+                    this.getJSON("SupplyChainNodes")
+
+                ]);
+
+
+                // ==============================
+                // KPI DATA
+                // ==============================
+
+                this.byId("supplierCount")
+                    .setText(
+                        suppliers.value.length.toString()
+                    );
+
+
+                this.byId("criticalCount")
+                    .setText(
+                        components.value
+                            .filter(c =>
+                                c.criticality === "HIGH" ||
+                                c.criticality === "Critical"
+                            )
+                            .length
+                            .toString()
+                    );
+
+
+                const activeDisruptions =
+                    disruptions.value.filter(
+                        d => d.active === true
+                    );
+
+
+                this.byId("disruptionCount")
+                    .setText(
+                        activeDisruptions.length.toString()
+                    );
+
+
+                // ==============================
+                // DISRUPTION
+                // ==============================
+
+                if (activeDisruptions.length > 0) {
+
+                    const disruption =
+                        activeDisruptions[0];
+
+                    this.byId("disruptionTitle")
+                        .setText(
+                            disruption.location +
+                            " Disruption"
+                        );
+
+                    this.byId("disruptionType")
+                        .setText(
+                            disruption.type
+                        );
+
+                    this.byId("disruptionSeverity")
+                        .setText(
+                            disruption.severity
+                        );
+
+                    this.byId("delayDays")
+                        .setText(
+                            disruption.delayDays +
+                            " Days"
+                        );
+
+                    this.byId("disruptionLocation")
+                        .setText(
+                            disruption.location
+                        );
+
+                    this.byId("agentLocation")
+                        .setText(
+                            disruption.location
+                        );
+
+                    this.byId("agentEvent")
+                        .setText(
+                            disruption.type
+                        );
+
+                    this.byId("agentDelay")
+                        .setText(
+                            disruption.delayDays +
+                            " Days"
+                        );
+
+                }
+
+
+                // ==============================
+                // NODE COUNT
+                // ==============================
+
+                this.byId("affectedNodes")
+                    .setText(
+                        nodes.value.length.toString()
+                    );
+
+
+                // ==============================
+                // STOCKOUT CALCULATION
+                // ==============================
+
+                const stockouts =
+                    inventory.value.filter(
+                        item =>
+                            Number(item.stockDays) <
+                            Number(item.normalLeadTimeDays)
+                    );
+
+                this.byId("stockoutCount")
+                    .setText(
+                        stockouts.length.toString()
+                    );
+
+
+                // ==============================
+                // RISK COUNT
+                // ==============================
+
+                const riskCount =
+                    stockouts.length;
+
+                this.byId("riskCount")
+                    .setText(
+                        riskCount.toString()
+                    );
+
+
+                console.log(
+                    "Dashboard data loaded",
+                    {
+                        suppliers:
+                            suppliers.value.length,
+
+                        components:
+                            components.value.length,
+
+                        inventory:
+                            inventory.value.length,
+
+                        disruptions:
+                            disruptions.value.length,
+
+                        nodes:
+                            nodes.value.length
+                    }
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Dashboard loading failed:",
+                    error
+                );
+
+                MessageToast.show(
+                    "Some dashboard data could not be loaded."
+                );
+
+            }
+
+        },
+
+
+        // ==========================================
+        // AGENT ACTIONS
+        // ==========================================
+
+        onTrace: function () {
+
+            MessageToast.show(
+                "Cascade Agent activated"
+            );
+
+        },
+
+
+        onPredict: function () {
+
+            MessageToast.show(
+                "Prediction Agent activated"
+            );
+
+        },
+
+
+        onRecommend: function () {
+
+            MessageToast.show(
+                "Mitigation Agent activated"
+            );
+
+        },
+
+
+        // ==========================================
+        // HUMAN APPROVAL
+        // ==========================================
+
+        onApprove: async function () {
+
+            MessageBox.confirm(
+                "Approve Vendor Y as the alternate supplier?",
+                {
+                    title: "Human Approval Required",
+
+                    onClose: async (action) => {
+
+                        if (action !== MessageBox.Action.OK) {
+                            return;
+                        }
+
+                        await this.approveDecision();
+
+                    }
+                }
+            );
+
+        },
+
+
+        async approveDecision() {
+
+            try {
+
+                const decisions =
+                    await this.getJSON("Decisions");
+
+                const pending =
+                    decisions.value
+                        .filter(
+                            d =>
+                                d.status ===
+                                "PENDING_APPROVAL"
+                        )
+                        .sort(
+                            (a, b) =>
+                                new Date(b.createdAt) -
+                                new Date(a.createdAt)
+                        );
+
+
+                if (pending.length === 0) {
+
+                    MessageBox.warning(
+                        "No pending decision found. Run the Safeguard Agent first."
+                    );
+
+                    return;
+
+                }
+
+
+                const decision =
+                    pending[0];
+
+
+                const response =
+                    await fetch(
+                        "/api/risk/approveDecision",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                decisionId:
+                                    decision.ID,
+
+                                approved: true
+                            })
+                        }
+                    );
+
+
+                if (!response.ok) {
+                    throw new Error(
+                        "Approval failed"
+                    );
+                }
+
+
+                this.byId("decisionStatus")
+                    .setText(
+                        "✓ APPROVED BY HUMAN"
+                    );
+
+                this.byId("decisionStatus")
+                    .setState(
+                        "Success"
+                    );
+
+                this.byId("approvalButton")
+                    .setEnabled(false);
+
+
+                MessageBox.success(
+                    "Vendor Y recommendation approved successfully."
+                );
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                MessageBox.error(
+                    "Could not approve the decision."
+                );
+
+            }
+
+        },
+
+
+        onReject: function () {
+
+            MessageBox.warning(
+                "Recommendation rejected. No reroute will be executed."
+            );
+
+        }
+
+    });
+
+});

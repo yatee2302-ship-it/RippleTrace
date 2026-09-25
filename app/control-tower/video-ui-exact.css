@@ -1,0 +1,1060 @@
+/* ============================================================
+   RIPPLETRACE VIDEO UI - FINAL VISUAL LAYER
+   ============================================================ */
+
+
+/* ============================================================
+   PAGE
+   ============================================================ */
+
+html,
+body {
+
+    background:
+        #050a0f !important;
+
+    color:
+        #e8eef4 !important;
+
+}
+
+
+body {
+
+    min-height:
+        100vh;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ) !important;
+
+    background-size:
+        24px 24px,
+        24px 24px;
+
+}
+
+
+/* ============================================================
+   MAIN PAGE
+   ============================================================ */
+
+main,
+#app,
+.dashboard,
+.main-content,
+.page-content {
+
+    background:
+        transparent !important;
+
+}
+
+
+/* ============================================================
+   HEADINGS
+   ============================================================ */
+
+h1,
+h2,
+h3 {
+
+    letter-spacing:
+        -.01em;
+
+}
+
+
+/* ============================================================
+   KPI AREA
+   ============================================================ */
+
+.kpi-card,
+.metric-card,
+.summary-card {
+
+    background:
+        #0b1219 !important;
+
+    border:
+        1px solid #202d38 !important;
+
+    color:
+        #e8eef4 !important;
+
+    border-radius:
+        9px !important;
+
+}
+
+
+.kpi-card *,
+.metric-card *,
+.summary-card * {
+
+    opacity:
+        1 !important;
+
+}
+
+
+.kpi-card .value,
+.metric-card .value,
+.summary-card .value,
+.kpi-value {
+
+    color:
+        #f5f8fb !important;
+
+    font-weight:
+        700 !important;
+
+}
+
+
+/* ============================================================
+   DARK INFORMATION PANELS
+   ============================================================ */
+
+.risk-card,
+.risk-overview,
+.mitigation-card,
+.mitigation-readiness,
+.network-card,
+.network-panel,
+.graph-panel,
+.dependency-network {
+
+    background:
+        #091118 !important;
+
+    border:
+        1px solid #25323d !important;
+
+    color:
+        #e7edf3 !important;
+
+    border-radius:
+        9px !important;
+
+}
+
+
+/* ============================================================
+   REALTIME GRAPH
+   ============================================================ */
+
+.network-card,
+.network-panel,
+.graph-panel,
+.dependency-network {
+
+    overflow:
+        hidden !important;
+
+}
+
+
+/*
+   DO NOT style SVG paths aggressively.
+   realtime-monitor.js owns the graph.
+*/
+
+
+/* ============================================================
+   AGENT COMMAND CENTER
+   ============================================================ */
+
+#agent-command-center,
+.agent-command-center,
+.agent-section,
+.agents-section,
+.command-center {
+
+    background:
+        transparent !important;
+
+    color:
+        #edf2f7 !important;
+
+}
+
+
+/* ============================================================
+   AGENT GRID
+   ============================================================ */
+
+.agent-grid,
+.agents-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        16px;
+
+}
+
+
+@media (max-width: 1200px) {
+
+    .agent-grid,
+    .agents-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .agent-grid,
+    .agents-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+/* ============================================================
+   AGENT CARDS
+   ============================================================ */
+
+.agent-card,
+.agent-panel,
+.agent-box {
+
+    background:
+        #ffffff !important;
+
+    color:
+        #25313b !important;
+
+    border:
+        1px solid #dce2e7 !important;
+
+    border-radius:
+        8px !important;
+
+    box-shadow:
+        0 2px 10px
+        rgba(
+            0,
+            0,
+            0,
+            .16
+        ) !important;
+
+    opacity:
+        1 !important;
+
+}
+
+
+/* Everything inside agent cards */
+
+.agent-card *,
+.agent-panel *,
+.agent-box * {
+
+    opacity:
+        1 !important;
+
+}
+
+
+/* ============================================================
+   AGENT CARD LEFT ACCENTS
+   ============================================================ */
+
+.agent-card:nth-child(1),
+.agent-panel:nth-child(1),
+.agent-box:nth-child(1) {
+
+    border-left:
+        4px solid #087cff !important;
+
+}
+
+
+.agent-card:nth-child(2),
+.agent-panel:nth-child(2),
+.agent-box:nth-child(2) {
+
+    border-left:
+        4px solid #7557ff !important;
+
+}
+
+
+.agent-card:nth-child(3),
+.agent-panel:nth-child(3),
+.agent-box:nth-child(3) {
+
+    border-left:
+        4px solid #19a974 !important;
+
+}
+
+
+.agent-card:nth-child(4),
+.agent-panel:nth-child(4),
+.agent-box:nth-child(4) {
+
+    border-left:
+        4px solid #f28b20 !important;
+
+}
+
+
+/* ============================================================
+   AGENT HEADERS
+   ============================================================ */
+
+.agent-card h1,
+.agent-card h2,
+.agent-card h3,
+.agent-card h4,
+.agent-panel h1,
+.agent-panel h2,
+.agent-panel h3,
+.agent-panel h4,
+.agent-box h1,
+.agent-box h2,
+.agent-box h3,
+.agent-box h4 {
+
+    color:
+        #26313a !important;
+
+    opacity:
+        1 !important;
+
+}
+
+
+/* ============================================================
+   AGENT SUBTITLE
+   ============================================================ */
+
+.agent-card p,
+.agent-card .subtitle,
+.agent-card .description,
+.agent-card .agent-description,
+.agent-panel p,
+.agent-panel .subtitle,
+.agent-panel .description {
+
+    color:
+        #74818c !important;
+
+    opacity:
+        1 !important;
+
+}
+
+
+/* ============================================================
+   AGENT NUMBER
+   ============================================================ */
+
+.agent-card .step,
+.agent-card .number,
+.agent-card .agent-number,
+.agent-card .step-number,
+.agent-card .agent-index,
+.agent-card .step-index,
+
+.agent-panel .step,
+.agent-panel .number,
+.agent-panel .agent-number,
+.agent-panel .step-number,
+.agent-panel .agent-index,
+.agent-panel .step-index,
+
+.agent-box .step,
+.agent-box .number,
+.agent-box .agent-number,
+.agent-box .step-number,
+.agent-box .agent-index,
+.agent-box .step-index {
+
+    display:
+        flex !important;
+
+    align-items:
+        center !important;
+
+    justify-content:
+        center !important;
+
+    width:
+        34px !important;
+
+    min-width:
+        34px !important;
+
+    height:
+        34px !important;
+
+    min-height:
+        34px !important;
+
+    padding:
+        0 !important;
+
+    margin:
+        0 !important;
+
+    background:
+        #edf1f5 !important;
+
+    color:
+        #344454 !important;
+
+    border:
+        1px solid #d6dde4 !important;
+
+    border-radius:
+        5px !important;
+
+    font-size:
+        12px !important;
+
+    font-weight:
+        800 !important;
+
+    line-height:
+        34px !important;
+
+    text-align:
+        center !important;
+
+    opacity:
+        1 !important;
+
+    visibility:
+        visible !important;
+
+}
+
+
+/* ============================================================
+   FORCE DIGITS CREATED BY JS
+   ============================================================ */
+
+.rt-visible-agent-digit {
+
+    display:
+        flex !important;
+
+    align-items:
+        center !important;
+
+    justify-content:
+        center !important;
+
+    width:
+        34px !important;
+
+    height:
+        34px !important;
+
+    min-width:
+        34px !important;
+
+    min-height:
+        34px !important;
+
+    background:
+        #edf1f5 !important;
+
+    color:
+        #263746 !important;
+
+    border:
+        1px solid #d3dce4 !important;
+
+    border-radius:
+        5px !important;
+
+    font-size:
+        12px !important;
+
+    font-weight:
+        800 !important;
+
+    opacity:
+        1 !important;
+
+    visibility:
+        visible !important;
+
+}
+
+
+/* ============================================================
+   AGENT METRICS
+   ============================================================ */
+
+.agent-card .metric,
+.agent-card .metric-box,
+.agent-card .stat,
+.agent-card .stat-box,
+.agent-card .field,
+.agent-card .data-field,
+.agent-card .info-box,
+.agent-card .value-box,
+
+.agent-panel .metric,
+.agent-panel .metric-box,
+.agent-panel .stat,
+.agent-panel .stat-box {
+
+    background:
+        #f7f9fa !important;
+
+    border:
+        1px solid #dce3e8 !important;
+
+    color:
+        #27333c !important;
+
+    border-radius:
+        5px !important;
+
+}
+
+
+/* ============================================================
+   METRIC LABELS
+   ============================================================ */
+
+.agent-card .metric-label,
+.agent-card .label,
+.agent-card .field-label,
+.agent-card .stat-label,
+
+.agent-panel .metric-label,
+.agent-panel .label,
+.agent-panel .field-label,
+.agent-panel .stat-label {
+
+    color:
+        #7a8792 !important;
+
+    opacity:
+        1 !important;
+
+    font-size:
+        10px !important;
+
+    font-weight:
+        600 !important;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* ============================================================
+   METRIC VALUES
+   ============================================================ */
+
+.agent-card .metric-value,
+.agent-card .value,
+.agent-card .stat-value,
+.agent-card .field-value,
+
+.agent-panel .metric-value,
+.agent-panel .value,
+.agent-panel .stat-value,
+.agent-panel .field-value {
+
+    color:
+        #25313a !important;
+
+    font-size:
+        18px !important;
+
+    font-weight:
+        750 !important;
+
+    opacity:
+        1 !important;
+
+    visibility:
+        visible !important;
+
+}
+
+
+/* ============================================================
+   OUTPUT
+   ============================================================ */
+
+.agent-output,
+.output-box,
+.agent-card .agent-output,
+.agent-card .output-box,
+.agent-panel .agent-output,
+.agent-panel .output-box {
+
+    background:
+        #f7f9fa !important;
+
+    border:
+        1px solid #dce3e8 !important;
+
+    color:
+        #35414d !important;
+
+    opacity:
+        1 !important;
+
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.agent-card .status,
+.agent-card .badge,
+.agent-card .agent-status,
+.agent-panel .status,
+.agent-panel .badge,
+.agent-panel .agent-status {
+
+    opacity:
+        1 !important;
+
+    visibility:
+        visible !important;
+
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.agent-card button,
+.agent-panel button,
+.agent-box button {
+
+    opacity:
+        1 !important;
+
+    visibility:
+        visible !important;
+
+}
+
+
+/* Primary */
+
+.agent-card button.primary,
+.agent-card .primary-button,
+.agent-panel button.primary,
+.agent-panel .primary-button {
+
+    background:
+        #087cff !important;
+
+    color:
+        #ffffff !important;
+
+    border-color:
+        #087cff !important;
+
+}
+
+
+/* Secondary */
+
+.agent-card button.secondary,
+.agent-card .secondary-button,
+.agent-panel button.secondary,
+.agent-panel .secondary-button {
+
+    background:
+        #edf5fc !important;
+
+    color:
+        #086dcc !important;
+
+    border:
+        1px solid #bfd7ec !important;
+
+}
+
+
+/* ============================================================
+   REPORT BUTTON
+   ============================================================ */
+
+.agent-card [data-rippletrace-report],
+.agent-panel [data-rippletrace-report] {
+
+    background:
+        #edf5fc !important;
+
+    color:
+        #086dcc !important;
+
+    border:
+        1px solid #bfd7ec !important;
+
+    border-radius:
+        5px !important;
+
+}
+
+
+/* ============================================================
+   REPORT MODAL
+   ============================================================ */
+
+#rt-report-modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        99999;
+
+}
+
+
+#rt-report-modal .rt-report-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            .74
+        ) !important;
+
+    backdrop-filter:
+        blur(
+            8px
+        );
+
+}
+
+
+#rt-report-modal .rt-report-panel {
+
+    width:
+        min(
+            900px,
+            90vw
+        );
+
+    max-height:
+        85vh;
+
+    overflow:
+        auto;
+
+    background:
+        #09131c !important;
+
+    color:
+        #e8eef5 !important;
+
+    border:
+        1px solid #30404c !important;
+
+    border-radius:
+        9px !important;
+
+    padding:
+        24px !important;
+
+    box-shadow:
+        0 30px 90px
+        rgba(
+            0,
+            0,
+            0,
+            .7
+        ) !important;
+
+}
+
+
+/* ============================================================
+   END
+   ============================================================ */
+
+:root {
+    --rt-ink: #071016;
+    --rt-surface: rgba(12, 24, 31, .88);
+    --rt-surface-strong: #0d1b22;
+    --rt-line: rgba(133, 183, 194, .18);
+    --rt-cyan: #4de1d1;
+    --rt-blue: #55a9ff;
+    --rt-amber: #f7b955;
+    --rt-red: #ff6673;
+}
+
+html,
+body {
+    font-family: "Space Grotesk", "72", sans-serif !important;
+    background: var(--rt-ink) !important;
+}
+
+body {
+    background-image:
+        radial-gradient(circle at 85% 8%, rgba(77, 225, 209, .08), transparent 27%),
+        linear-gradient(rgba(143, 209, 214, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(143, 209, 214, .035) 1px, transparent 1px) !important;
+    background-size: auto, 28px 28px, 28px 28px;
+}
+
+.topbar {
+    background: rgba(5, 14, 19, .86) !important;
+    border-bottom: 1px solid var(--rt-line) !important;
+    backdrop-filter: blur(18px);
+}
+
+.brand-logo {
+    background: linear-gradient(145deg, var(--rt-cyan), var(--rt-blue)) !important;
+    color: #061218 !important;
+    box-shadow: 0 0 25px rgba(77, 225, 209, .25);
+}
+
+.brand-name,
+.page-header h1,
+.section-title h2,
+.panel h2,
+.agent h3 {
+    letter-spacing: 0 !important;
+}
+
+.page-header {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(115deg, rgba(11, 29, 37, .98), rgba(6, 14, 19, .92)) !important;
+    border-bottom: 1px solid var(--rt-line) !important;
+}
+
+.page-header::after {
+    position: absolute;
+    right: 8%;
+    bottom: -100px;
+    width: 320px;
+    height: 220px;
+    border: 1px solid rgba(77, 225, 209, .2);
+    border-radius: 50%;
+    content: "";
+    transform: rotate(-18deg);
+    box-shadow: 0 0 0 18px rgba(77, 225, 209, .025), 0 0 0 36px rgba(77, 225, 209, .018);
+}
+
+.page-header h1 span {
+    color: var(--rt-cyan) !important;
+    text-shadow: 0 0 24px rgba(77, 225, 209, .22);
+}
+
+.kpi,
+.panel,
+.disruption,
+.agent {
+    background: var(--rt-surface) !important;
+    border: 1px solid var(--rt-line) !important;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .22) !important;
+    transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.kpi:hover,
+.panel:hover,
+.disruption:hover,
+.agent:hover {
+    border-color: rgba(77, 225, 209, .42) !important;
+    box-shadow: 0 22px 65px rgba(0, 0, 0, .32), 0 0 26px rgba(77, 225, 209, .06) !important;
+}
+
+.kpi strong,
+.metric strong,
+.rt-stat strong {
+    color: #f4fbfa !important;
+}
+
+.agent-header {
+    background: rgba(255, 255, 255, .018) !important;
+    border-bottom-color: var(--rt-line) !important;
+}
+
+.agent-number {
+    background: rgba(77, 225, 209, .1) !important;
+    color: var(--rt-cyan) !important;
+}
+
+.metric,
+.output {
+    background: rgba(5, 16, 22, .62) !important;
+    border-color: var(--rt-line) !important;
+}
+
+.metric label,
+.output label,
+.decision-info label {
+    color: #8097a0 !important;
+}
+
+.output pre {
+    color: #b4d1d1 !important;
+}
+
+.approval {
+    background: linear-gradient(135deg, rgba(247, 185, 85, .1), rgba(12, 24, 31, .9)) !important;
+    border-color: rgba(247, 185, 85, .3) !important;
+}
+
+.approval p,
+.decision-info strong {
+    color: #dbe8e7 !important;
+}
+
+.reject {
+    background: transparent !important;
+}
+
+.kpi-grid {
+    gap: 12px !important;
+}
+
+.rt-monitor {
+    position: relative;
+    background: linear-gradient(145deg, rgba(12, 31, 38, .96), rgba(7, 17, 23, .96)) !important;
+    border-color: rgba(77, 225, 209, .22) !important;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, .3), inset 0 1px rgba(255, 255, 255, .04) !important;
+}
+
+.network-overview {
+    display: none !important;
+}
+
+.rt-network {
+    min-height: 390px;
+    transform: perspective(1200px) rotateX(2deg);
+    transform-origin: center bottom;
+}
+
+#rtDepthCanvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .9;
+}
+
+.rt-network svg {
+    position: relative;
+    z-index: 1;
+    opacity: .92;
+}
+
+.rt-live-status {
+    box-shadow: 0 0 20px rgba(53, 220, 138, .08);
+}
+
+.agents-section {
+    padding-top: 12px;
+}
+
+.agent-button.primary,
+.agent-button:hover:not(:disabled) {
+    background: linear-gradient(110deg, var(--rt-cyan), var(--rt-blue)) !important;
+    border-color: transparent !important;
+    color: #061218 !important;
+    box-shadow: 0 10px 24px rgba(77, 225, 209, .18);
+}
+
+@keyframes rtReveal {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-header,
+.kpi,
+.disruption,
+.panel,
+.rt-monitor,
+.agent {
+    animation: rtReveal .65s ease both;
+}
+
+.kpi:nth-child(2) { animation-delay: .06s; }
+.kpi:nth-child(3) { animation-delay: .12s; }
+.kpi:nth-child(4) { animation-delay: .18s; }
+.kpi:nth-child(5) { animation-delay: .24s; }
+
+@media (max-width: 700px) {
+    .topbar { padding: 0 16px; }
+    .top-right { gap: 8px; }
+    .online { font-size: 9px; }
+    .top-icon { display: none; }
+    .page-header { padding: 28px 18px 22px; }
+    .page-header h1 { font-size: 27px; }
+    .live-status { margin-top: 18px; align-self: flex-start; }
+    .page-header { display: block; }
+    .rt-network { min-height: 310px; transform: none; }
+    .rt-network svg { min-height: 310px !important; }
+    .rt-header, .rt-footer { padding-left: 17px; padding-right: 17px; }
+}

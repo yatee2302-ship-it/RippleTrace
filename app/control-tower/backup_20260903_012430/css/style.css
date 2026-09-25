@@ -1,0 +1,292 @@
+html,
+body,
+#content,
+.sapUiBody {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f5f6f7;
+}
+
+.appRoot {
+    width: 100%;
+    height: 100%;
+}
+
+.mainPage {
+    background: #f5f6f7;
+}
+
+.pageHeader {
+    background: #ffffff;
+    padding: 28px 34px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.pageHeader .sapMTitle {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.subtitleText {
+    color: #6a6d70;
+    margin-top: 5px;
+}
+
+.systemStatus {
+    font-weight: 700;
+}
+
+.kpiRow {
+    padding: 20px 34px 5px;
+    gap: 14px;
+}
+
+.kpiCard {
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    padding: 18px;
+    min-width: 165px;
+    flex: 1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.kpiCard.criticalCard {
+    border-left: 4px solid #bb0000;
+}
+
+.kpiLabel,
+.cardLabel,
+.resultLabel {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: #6a6d70;
+}
+
+.kpiValue {
+    margin: 8px 0 3px;
+    font-size: 30px;
+}
+
+.sectionPanel {
+    margin: 15px 34px;
+    border: 1px solid #dedede;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.sectionPanel > .sapMPanelHdr {
+    font-weight: 600;
+    color: #32363a;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.disruptionPanel {
+    border-left: 5px solid #bb0000;
+}
+
+.disruptionContent {
+    padding: 20px;
+    gap: 30px;
+}
+
+.disruptionMetric {
+    min-width: 130px;
+}
+
+.overviewRow {
+    padding: 20px;
+    gap: 15px;
+}
+
+.overviewCard {
+    background: #f7f8f9;
+    border: 1px solid #e2e3e4;
+    border-radius: 6px;
+    padding: 20px;
+    min-width: 220px;
+    flex: 1;
+}
+
+.largeRisk {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.mutedText {
+    color: #6a6d70;
+    margin-top: 8px;
+}
+
+.dependencyRow {
+    padding: 25px 20px;
+    gap: 10px;
+}
+
+.dependencyNode {
+    background: #f7f8f9;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    padding: 15px;
+    min-width: 145px;
+    text-align: center;
+}
+
+.dependencyNode .sapMTitle {
+    margin: 7px 0;
+    font-size: 15px;
+}
+
+.dependencyNode .sapMText {
+    color: #6a6d70;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.dependencyArrow {
+    font-size: 24px;
+    color: #6a6d70;
+}
+
+.agentPanel {
+    margin-bottom: 35px;
+}
+
+.agentIntro {
+    padding: 20px;
+    color: #5b5f62;
+}
+
+.agentCard {
+    margin: 14px;
+    border: 1px solid #dedede;
+    border-radius: 6px;
+}
+
+.agentCard > .sapMPanelHdr {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.agentCard .sapMPanelContent {
+    padding: 20px;
+}
+
+.traceCard {
+    border-left: 4px solid #0070f2;
+}
+
+.predictCard {
+    border-left: 4px solid #6a5acd;
+}
+
+.recommendCard {
+    border-left: 4px solid #107e3e;
+}
+
+.safeguardCard {
+    border-left: 4px solid #e9730c;
+}
+
+.resultGrid {
+    margin-top: 18px;
+    gap: 10px;
+}
+
+.resultMetric {
+    background: #f7f8f9;
+    border: 1px solid #e2e3e4;
+    border-radius: 5px;
+    padding: 14px;
+    min-width: 125px;
+    flex: 1;
+}
+
+.wideMetric {
+    min-width: 280px;
+}
+
+.agentResultBox {
+    margin-top: 18px;
+    padding: 16px;
+    background: #f5f6f7;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+}
+
+.resultText {
+    margin-top: 8px;
+    white-space: pre-wrap;
+    line-height: 1.55;
+}
+
+.agentButton {
+    margin-top: 18px;
+    min-width: 240px;
+}
+
+.approvalBox {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #fffdf7;
+}
+
+.decisionText {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.decisionMeta {
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 1px solid #e4e4e4;
+    gap: 40px;
+}
+
+.approvalActions {
+    margin-top: 20px;
+    gap: 12px;
+}
+
+@media (max-width: 900px) {
+
+    .pageHeader {
+        padding: 20px;
+    }
+
+    .kpiRow {
+        padding: 15px;
+    }
+
+    .sectionPanel {
+        margin: 12px 15px;
+    }
+
+    .dependencyArrow {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .kpiCard,
+    .overviewCard,
+    .resultMetric {
+        min-width: 100%;
+    }
+
+    .disruptionContent {
+        align-items: flex-start;
+    }
+}

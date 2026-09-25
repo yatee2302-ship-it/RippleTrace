@@ -1,0 +1,5 @@
+ID,type,location,severity,delayDays,description,active
+DIS001,Maritime Delay,Shanghai Port,HIGH,7,Severe congestion causing shipment delays,true
+DIS002,Extreme Weather,Taipei,HIGH,5,Typhoon warning affecting semiconductor exports,true
+DIS003,Factory Maintenance,Pune,MEDIUM,3,Planned maintenance reduces assembly capacity,true
+DIS004,Customs Hold,Munich,MEDIUM,4,Documentation review delaying inbound components,false

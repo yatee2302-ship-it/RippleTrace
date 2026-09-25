@@ -1,0 +1,7 @@
+ID,name,criticality
+COMP001,Power IC,Critical
+COMP002,PCB Controller,High
+COMP003,Memory Module,Medium
+COMP004,Power Management IC,Critical
+COMP005,High-Speed Connector,High
+COMP006,Industrial Sensor,Medium
