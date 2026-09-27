@@ -211,7 +211,7 @@ These components support the overall vision of connecting supply-chain data, int
 
 ## 👩‍💻 My Contribution
 
-**Yatee Soni — Team Member**
+**Yatee Soni — Team Leader**
 
 Contributed to the development and presentation of RippleTrace as part of the **SAP Hackfest 2026 team**.
 
